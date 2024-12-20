@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+New Blog
+{% endblock title %}
+
+{% block body %}
+<h1>New blog.</h1>
+<form action="{{ url_for('new_blog') }}" method="post">
+    <input type="text" name="title" id="title" placeholder="Article Title" required>
+    <br><br>
+    <input type="date" name="publish_date" id="publish_date" placeholder="publish_date" required>
+    <br><br>
+    <textarea name="content" id="content" cols="100" rows="30" placeholder="Enter content"></textarea>
+    <br>
+    <input type="submit" value="Publish">
+</form>
+{% endblock body%}
