@@ -8,7 +8,7 @@ from fetch_blog import fetch_blogs
 def blogger():
     if session.get('is_login'):
         return render_template("blog/blogger.html", blogs=fetch_blogs())
-    return redirect(url_for('admin_login_page'))
+    return redirect(url_for('admin.admin_login_page'))
 
 @blog_bp.route("/<blog_title>")
 def read_blog(blog_title):
@@ -39,7 +39,7 @@ def new_blog():
         filename = "blog_db/" + title + ".json"
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
-        return redirect(url_for('blogger'))
+        return redirect(url_for('blog.blogger'))
     return render_template('blog/new_blog.html')
 
 @blog_bp.route('/edit', defaults={'blog': None}, methods=['GET', 'POST'])
@@ -58,12 +58,12 @@ def edit_blog(blog):
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
         flash("Blog updated", 'success')
-        return redirect(url_for('blogger'))
+        return redirect(url_for('blog.blogger'))
 
     filename = f"blog_db/{blog}.json"
     if not os.path.exists(filename):
         flash("Error. Blog not found", 'error')
-        return redirect(url_for('blogger'))
+        return redirect(url_for('blog.blogger'))
     with open(filename, 'r', encoding='utf-8') as file:
         data = json.load(file)
     context = {
@@ -82,4 +82,4 @@ def delete_blog(blog):
         flash("Blog deleted.", 'success')
     else:
         flash("Error blog not found.", "error")
-    return redirect(url_for('blogger'))
+    return redirect(url_for('blog.blogger'))

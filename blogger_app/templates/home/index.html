@@ -4,8 +4,15 @@ Home
 {% endblock title %}
 
 {% block body %}
-<h1>Welcome to personal blog.</h1>
-{% for blog in blogs %}
-<p><a href="{{ url_for('blog.read_blog', blog=blog) }}">{{ blog }}</a></p>
+<div class="container">
+    <h1 class="is-size-2-tablet is-size-4-mobile has-text-centered">Welcome to personal blog.</h1>
+    {% for blog in blogs %}
+    <div class="card ml-3 mr-2 is-radiusless is-size-3">
+        <div class="content px-2">
+            <p><a href="{{ url_for('blog.read_blog', blog_title=blog) }}">{{ blog }}</a></p>
+        </div>
+    </div>
 {% endfor %}
+</div>
+
 {% endblock body%}

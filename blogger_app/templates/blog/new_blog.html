@@ -4,14 +4,17 @@ New Blog
 {% endblock title %}
 
 {% block body %}
-<h1>New blog.</h1>
-<form action="{{ url_for('blog.new_blog') }}" method="post">
-    <input type="text" name="title" id="title" placeholder="Article Title" required>
-    <br><br>
-    <input type="date" name="publish_date" id="publish_date" placeholder="publish_date" required>
-    <br><br>
-    <textarea name="content" id="content" cols="100" rows="30" placeholder="Enter content"></textarea>
-    <br>
-    <input type="submit" value="Publish">
-</form>
+<div class="container">
+    <h1 class="is-size-2 has-background-info mb-3">New blog</h1>
+    <form action="{{ url_for('blog.new_blog') }}" method="post">
+        <input type="text" name="title" id="title" placeholder="Article Title" required class="input">
+        <br><br>
+        <input type="date" name="publish_date" id="publish_date" placeholder="publish_date" required class="input">
+        <br><br>
+        <textarea name="content" id="content" cols="60" rows="10" placeholder="Enter content" class="textarea"></textarea>
+        <br>
+        <input type="submit" value="Publish" class="button is-info">
+    </form>
+</div>
+
 {% endblock body%}

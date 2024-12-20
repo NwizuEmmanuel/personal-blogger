@@ -4,16 +4,39 @@ Blogger
 {% endblock title %}
 
 {% block body %}
-<p>Logout <a href="{{ url_for('admin.logout') }}">Here.</a></p>
-<h1>Welcome, Admin</h1>
-<p>Add new blog <a href="{{ url_for('blog.new_blog') }}">Here.</a></p>
-<br>
-{% for blog in blogs %}
-<div>
-    <p>{{ blog }}</p>
-    <a href="{{ url_for('blog.edit_blog', blog=blog) }}">Edit</a>
-    <a href="{{ url_for('blog.delete_blog', blog=blog) }}">Delete</a>
+<div class="container">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="is-size-1">Welcome, Admin</h1>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a href="{{ url_for('admin.logout') }}" class="button is-primary"><strong>Logout</strong></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <p><a href="{{ url_for('blog.new_blog') }}"><button class="button is-primary">Add new blog</button></a></p>
+    <br>
+    {% for blog in blogs %}
+    <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <p>{{ blog }}</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+            <a href="{{ url_for('blog.edit_blog', blog=blog) }}" class="card-footer-item">Edit</a>
+            <a href="{{ url_for('blog.delete_blog', blog=blog) }}" class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+    {% endfor %}
 </div>
-<br>
-{% endfor %}
 {% endblock body%}

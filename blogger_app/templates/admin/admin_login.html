@@ -4,18 +4,14 @@ Admin Login
 {% endblock title %}
 
 {% block body %}
-<h1>Admin Login.</h1>
-<form action="{{ url_for('admin.admin_login_page') }}" method="post">
-    <label for="email">
-        Email<br>
-        <input type="email" name="email" id="email">
-    </label>
-    <br>
-    <label for="password">
-        Password<br>
-        <input type="password" name="password" id="password">
-    </label>
-    <br>
-    <input type="submit" value="Login">
-</form>
+<div class="container">
+    <h1 class="is-size-2 has-background-info pl-2 mb-3">Admin Login</h1>
+    <form action="{{ url_for('admin.admin_login_page') }}" method="post">
+        <input type="email" name="email" id="email" class="input mb-2" placeholder="Email" style="width: 500px;">
+        <br>
+        <input type="password" name="password" id="password" class="input mb-2" placeholder="password" style="width: 500px;">
+        <br>
+        <input type="submit" value="Login" class="button is-info">
+    </form>
+</div>
 {% endblock body%}

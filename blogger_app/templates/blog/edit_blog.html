@@ -4,14 +4,16 @@ Edit Blog
 {% endblock title %}
 
 {% block body %}
-<h1>Edit blog.</h1>
-<form action="{{ url_for('blog.edit_blog') }}" method="post">
-    <input type="text" name="title" id="title" placeholder="Article Title" required value="{{ title }}">
-    <br><br>
-    <input type="date" name="publish_date" id="publish_date" placeholder="publish_date" required value="{{ pub_date }}">
-    <br><br>
-    <textarea name="content" id="content" cols="100" rows="30" placeholder="Enter content">{{ content }}</textarea>
-    <br>
-    <input type="submit" value="Update">
-</form>
+<div class="container">
+    <h1 class="is-size-2 has-background-info mb-3">Edit blog</h1>
+    <form action="{{ url_for('blog.edit_blog') }}" method="post">
+        <input type="text" name="title" id="title" placeholder="Article Title" required class="input" value="{{ title }}">
+        <br><br>
+        <input type="date" name="publish_date" id="publish_date" placeholder="publish_date" required class="input" value="{{ pub_date }}">
+        <br><br>
+        <textarea name="content" id="content" cols="60" rows="10" placeholder="Enter content" class="textarea">{{ content }}</textarea>
+        <br>
+        <input type="submit" value="Update" class="button is-info">
+    </form>
+</div>
 {% endblock body%}
